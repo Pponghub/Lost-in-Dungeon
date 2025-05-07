@@ -17,34 +17,38 @@ export class MainMenu extends Scene
         super('MainMenu');
     }
 
-    preload(){
-
-        this.load.setPath('assets/images');
-        
-        this.load.image('battle_background', 'battle_background.png');
-        this.load.image('mc', 'mc_gambler.png');
-        this.load.image('menu', 'main_control_menu.png');
-        this.load.image('sub_menu', 'menu_action_box.png');
-        this.load.image('slime', 'slime.png');
-    }
-
     create ()
     {
+        console.log('[${Preloader.name}:create] invoked');
         this.background = this.add.image(640, 320, 'battle_background');
         this.mc = this.add.image(250, 320, 'mc').setScale(0.7);
         this.enemy = this.add.image(1050, 380, 'slime'); 
         this.menu = this.add.image(640, 530, 'menu');
-        // this.sub_menu = this.add.image(640, 480, 'sub_menu');
 
-        // this.title = this.add.text(512, 460, 'Main Menu', {
-        //     fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-        //     stroke: '#000000', strokeThickness: 8,
-        //     align: 'center'
-        // }).setOrigin(0.5).setDepth(100);
+        const choice_Attack = this.add.text(128,64,'Attack',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
+        this.add.container(420,430,
+            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Attack]
+        );
+
+        const choice_Defend = this.add.text(128,64,'Defend',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
+        this.add.container(600,430,
+            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Defend]
+        );
+
+        const choice_Skill = this.add.text(128,64,'Skill',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
+        this.add.container(420,505,
+            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Skill]
+        );
+
+        const choice_Cash_In = this.add.text(128,64,'Cash In',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
+        this.add.container(600,505,
+            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Cash_In]
+        );
+
+        this.add.text
 
         EventBus.emit('current-scene-ready', this);
     }
-    
     // changeScene ()
     // {
     //     if (this.logoTween)

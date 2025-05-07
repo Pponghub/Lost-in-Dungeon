@@ -46,3 +46,9 @@ body {
         color: rgba(255, 255, 255, 0.3);
     }
 }
+
+@font-face {
+  font-family: 'pixelFont';
+  src: url(
+'/fonts/PixelatedEleganceRegular-ovyAA.ttf') format('truetype');
+}
