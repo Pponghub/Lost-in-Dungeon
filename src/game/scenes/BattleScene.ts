@@ -2,7 +2,7 @@ import { GameObjects, Scene } from 'phaser';
 
 import { EventBus } from '../EventBus';
 
-export class MainMenu extends Scene
+export class BattleScene extends Scene
 {
     background: GameObjects.Image;
     mc: GameObjects.Image;
@@ -14,7 +14,7 @@ export class MainMenu extends Scene
 
     constructor ()
     {
-        super('MainMenu');
+        super('BattleScene');
     }
 
     create ()

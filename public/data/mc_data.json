@@ -1,0 +1,14 @@
+{
+  "name": "Gambler",
+  "level": 1,
+  "hp": 100,
+  "mp": 100,
+  "stats": {
+    "atk": 15,
+    "def": 10,
+    "crit":15,
+    "int": 5,
+    "luk": 10,
+    "coin": 5
+  }
+}

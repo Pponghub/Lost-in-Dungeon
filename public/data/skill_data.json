@@ -1,0 +1,12 @@
+{
+    "name": "Slime",
+    "hp": 30,
+    "mp": 15,
+    "stats": {
+      "atk": 15,
+      "def": 10,
+      "crit":15,
+      "int": 5,
+      "coin": 5
+    }
+}
