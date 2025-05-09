@@ -40,9 +40,9 @@ export class BattleScene extends Scene
             [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Skill]
         );
 
-        const choice_Cash_In = this.add.text(128,64,'Cash In',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
+        const choice_Coin_Exchange = this.add.text(128,64,'Coin Exchange',{fontFamily:'pixelFont',fontSize: '28px',color: '#443846'}).setOrigin(0.5);
         this.add.container(600,505,
-            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Cash_In]
+            [this.add.image(0,0,'sub_menu').setScale(2).setOrigin(0),choice_Coin_Exchange]
         );
 
         this.add.text

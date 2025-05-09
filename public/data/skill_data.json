@@ -1,12 +1,74 @@
-{
-    "name": "Slime",
-    "hp": 30,
-    "mp": 15,
-    "stats": {
-      "atk": 15,
-      "def": 10,
-      "crit":15,
-      "int": 5,
-      "coin": 5
+[
+    {
+    "id":0,
+    "name": "Strike",
+    "description": "Deals x damage to a single target.",
+    "type": "physical",
+    "target": "single",
+    "mp_cost": 0,
+    "coin_cost":0,
+    "damage_amp": 1,
+    "statusEffect": null
+    },
+    {
+    "id":1,
+    "name": "Defend",
+    "description": "Reduces incoming damage by 20% until your next turn.",
+    "type": "defend",
+    "target": "single",
+    "mp_cost": 0,
+    "coin_cost":0,
+    "reduce_damage": 0.8,
+    "statusEffect": null
+    },
+    {
+    "id":2,
+    "name": "Coin_Exchange",
+    "description": "Exchange a portion of your stats for coins.",
+    "type": "special",
+    "target": "single",
+    "mp_cost": 0,
+    "coin_cost":0,
+    "statusEffect": null
+    },
+    {
+    "id":3,
+    "name": "Lucky_Coin",
+    "description": "Toss a coin. Heads grants a random buff, tails inflicts a random debuff.",
+    "type": "special",
+    "target": "single",
+    "mp_cost": 0,
+    "coin_cost":1,
+    "statusEffect": null
+    },
+    {
+    "id":4,
+    "name": "All_In",
+    "description": "Uses all coins to deal random damage between 0–999 to a single enemy. The more coins used, the higher the chance of dealing greater damage.",
+    "type": "physical",
+    "target": "single",
+    "mp_cost": 0,
+    "coin_cost": "all",
+    "statusEffect": null
+    },
+    {
+    "id":5,
+    "name": "Lucky_Punch",
+    "description": "Deals damage equal to 50% of your attack. If it lands a critical hit, the damage is multiplied by 10 instead.",
+    "type": "physical",
+    "target": "single",
+    "mp_cost": 20,
+    "damage_amp": [0.5,10],
+    "statusEffect": null
+    },    
+    {
+    "id":6,
+    "name": "Magic Wheel",
+    "description": "Unleashes a random spell.",
+    "type": "magical",
+    "target": "single",
+    "mp_cost": 20,
+    "coin_cost": 1,
+    "statusEffect": null
     }
-}
+]
