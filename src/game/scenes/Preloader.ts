@@ -30,6 +30,7 @@ export class Preloader extends Scene {
         this.load.image("menu", "main_control_menu.png");
         this.load.image("sub_menu", "menu_action_box.png");
         this.load.image("slime", "slime.png");
+        this.load.image("stat_box", "stat_box.png");
 
         this.load.setPath("data");
 
@@ -37,7 +38,11 @@ export class Preloader extends Scene {
         this.load.json("monster_data", "monster_data.json");
 
         this.load.setPath("fonts");
-        this.load.bitmapFont('pixelFont', 'PixelatedElegance.png', 'PixelatedElegance.fnt');
+        this.load.bitmapFont(
+            "pixelFont",
+            "PixelatedElegance.png",
+            "PixelatedElegance.fnt"
+        );
     }
 
     create() {

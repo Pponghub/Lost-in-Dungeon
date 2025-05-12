@@ -2,12 +2,12 @@
   "id": 0,
   "name": "Slime",
   "hp": 30,
-  "mp": 15,
+  "mp": 10,
   "stats": {
-    "atk": 15,
-    "def": 10,
-    "crit":15,
-    "int": 5,
+    "atk": 5,
+    "def": 5,
+    "crit":1,
+    "int": 1,
     "coin": 5
   }
 }]
