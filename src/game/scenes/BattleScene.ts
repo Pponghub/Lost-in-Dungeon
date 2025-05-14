@@ -28,8 +28,6 @@ export class BattleScene extends Scene {
         this.mc = this.add.image(250, 320, "mc").setScale(0.7);
         this.enemy = this.add.image(1020, 380, "slime");
         this.menu = this.add.image(605, 530, "menu");
-        this.stat_box_mc = this.add.image(245, 530, "stat_box").setScale(2);
-        this.stat_box_enemy = this.add.image(1030, 530, "stat_box").setScale(2);
 
         const choice_Attack = this.add
             .bitmapText(126, 64, "pixelFont", "Attack", 24)
@@ -63,81 +61,107 @@ export class BattleScene extends Scene {
             choice_Coin_Exchange,
         ]);
 
-        const mc_name = this.add.bitmapText(
-            30,
-            15,
-            "pixelFont",
-            `${mc.name}`,
-            24
-        );
+        const mc_name = this.add
+            .bitmapText(0, -55, "pixelFont", `${mc.name}`, 24)
+            .setOrigin(0.5);
         const mc_hp_mp = this.add
             .bitmapText(
-                32,
-                45,
+                0,
+                -15,
                 "pixelFont",
                 `Hp: ${mc.hp}/${mc.hp}\nMp: ${mc.mp}/${mc.mp}`,
                 18
             )
-            .setLineSpacing(5);
+            .setLineSpacing(5)
+            .setOrigin(0.5);
         const mc_stat_1 = this.add
             .bitmapText(
-                15,
-                90,
+                0,
+                40,
                 "pixelFont",
                 `Atk: ${mc.stats.atk}\nCrit: ${mc.stats.crit}\nLuk: ${mc.stats.luk}`,
                 16
             )
-            .setLineSpacing(10);
+            .setLineSpacing(10)
+            .setOrigin(1, 0.5);
         const mc_stat_2 = this.add
             .bitmapText(
-                105,
-                90,
+                10,
+                40,
                 "pixelFont",
                 `Def: ${mc.stats.def}\nInt: ${mc.stats.int}\nCoin: ${mc.stats.coin}`,
                 16
             )
-            .setLineSpacing(10);
-        this.add.container(150, 445, [mc_name, mc_hp_mp, mc_stat_1, mc_stat_2]);
+            .setLineSpacing(10)
+            .setOrigin(0, 0.5);
 
-        const monster_name = this.add.bitmapText(
-            50,
-            15,
-            "pixelFont",
-            `${slime.name}`,
-            24
-        );
+        this.stat_box_mc = this.add
+            .image(0, 0, "stat_box")
+            .setScale(2)
+            .setOrigin(0.5);
+        this.add.container(245, 530, [
+            this.stat_box_mc,
+            mc_name,
+            mc_hp_mp,
+            mc_stat_1,
+            mc_stat_2,
+        ]);
+
+        const monster_name = this.add
+            .bitmapText(0, -55, "pixelFont", `${slime.name}`, 24)
+            .setOrigin(0.5);
         const monster_hp_mp = this.add
             .bitmapText(
-                40,
-                45,
+                0,
+                -15,
                 "pixelFont",
                 `Hp: ${slime.hp}/${slime.hp}\nMp: ${slime.mp}/${slime.mp}`,
                 18
             )
-            .setLineSpacing(5);
+            .setLineSpacing(5)
+            .setOrigin(0.5);
         const monster_stat_1 = this.add
             .bitmapText(
-                17,
-                90,
+                0,
+                30,
                 "pixelFont",
-                `Atk: ${slime.stats.atk}\nCrit: ${slime.stats.crit}\nCoin: ${slime.stats.coin}`,
+                `Atk: ${slime.stats.atk}\nCrit: ${slime.stats.crit}`,
                 16
             )
-            .setLineSpacing(10);
+            .setLineSpacing(10)
+            .setOrigin(1, 0.5);
         const monster_stat_2 = this.add
             .bitmapText(
-                100,
-                90,
+                10,
+                30,
                 "pixelFont",
                 `Def: ${slime.stats.def}\nInt: ${slime.stats.int}`,
                 16
             )
-            .setLineSpacing(10);
-        this.add.container(935, 445, [
+            .setLineSpacing(10)
+            .setOrigin(0, 0.5);
+        const monster_coin = this.add
+            .bitmapText(
+                0,
+                55,
+                "pixelFont",
+                `Coin: ${slime.stats.coin}`,
+                16
+            )
+            .setLineSpacing(10)
+            .setOrigin(0.5,0);
+
+        this.stat_box_enemy = this.add
+            .image(0, 0, "stat_box")
+            .setScale(2)
+            .setOrigin(0.5);
+        this.add.container(1030, 530, [
+            this.stat_box_enemy,
             monster_name,
             monster_hp_mp,
             monster_stat_1,
             monster_stat_2,
+            monster_coin
         ]);
         EventBus.emit("current-scene-ready", this);
     }
