@@ -36,6 +36,7 @@ export class Preloader extends Scene {
 
         this.load.json("mc_data", "mc_data.json");
         this.load.json("monster_data", "monster_data.json");
+        this.load.json("skill_data","skill_data.json");
 
         this.load.setPath("fonts");
         this.load.bitmapFont(

@@ -1,5 +1,6 @@
 import { GameObjects, Scene } from "phaser";
 import { SelectMenu } from "../actionMenu/selectMenu";
+import { SkillMenu } from "../actionMenu/skillMenu";
 import { EventBus } from "../EventBus";
 
 export class BattleScene extends Scene {
@@ -11,6 +12,7 @@ export class BattleScene extends Scene {
     stat_box_mc: GameObjects.Image;
     stat_box_enemy: GameObjects.Image;
     selectMenu: any;
+    skillMenu: any;
 
     constructor() {
         super("BattleScene");
@@ -22,6 +24,7 @@ export class BattleScene extends Scene {
         const monster = this.cache.json.get("monster_data");
         const slime_stat = monster[0];
         const mc_stat = this.cache.json.get("mc_data");
+        const skillData = this.cache.json.get("skill_data");
 
         this.background = this.add.image(640, 320, "battle_background");
         this.mc = this.add.image(250, 320, "mc").setScale(0.7);
@@ -29,6 +32,10 @@ export class BattleScene extends Scene {
         this.menu = this.add.image(605, 530, "menu");
 
         this.selectMenu = new SelectMenu(this);
+        this.selectMenu.showSelectMenu();
+
+        this.skillMenu = new SkillMenu(this, skillData);
+        // this.skillMenu.showSkillMenu();
 
         this.createStatWindow_mc(mc_stat);
         this.createStatWindow_enemy(slime_stat);

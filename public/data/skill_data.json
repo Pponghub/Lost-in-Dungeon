@@ -23,7 +23,7 @@
     },
     {
     "id":2,
-    "name": "Coin_Exchange",
+    "name": "Coin Exchange",
     "description": "Exchange a portion of your stats for coins.",
     "type": "special",
     "target": "single",
@@ -33,7 +33,7 @@
     },
     {
     "id":3,
-    "name": "Lucky_Coin",
+    "name": "Lucky Coin",
     "description": "Toss a coin. Heads grants a random buff, tails inflicts a random debuff.",
     "type": "special",
     "target": "single",
@@ -43,7 +43,7 @@
     },
     {
     "id":4,
-    "name": "All_In",
+    "name": "All In",
     "description": "Uses all coins to deal random damage between 0–999 to a single enemy. The more coins used, the higher the chance of dealing greater damage.",
     "type": "physical",
     "target": "single",
@@ -53,7 +53,7 @@
     },
     {
     "id":5,
-    "name": "Lucky_Punch",
+    "name": "Lucky Punch",
     "description": "Deals damage equal to 50% of your attack. If it lands a critical hit, the damage is multiplied by 10 instead.",
     "type": "physical",
     "target": "single",

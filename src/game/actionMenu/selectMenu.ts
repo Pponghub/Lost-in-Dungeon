@@ -1,16 +1,32 @@
+import { GameObjects } from "phaser";
+
 export class SelectMenu {
     scene: Phaser.Scene;
+    selectMenuContainer: Phaser.GameObjects.Container;
 
     constructor(scene: Phaser.Scene) {
         this.scene = scene;
         this.callCreateSubPane();
     }
 
+    public showSelectMenu(): void {
+        this.selectMenuContainer.setAlpha(1);
+        console.log("show select menu");
+    }
+
+    public hideSelectMenu(): void {
+        this.selectMenuContainer.setAlpha(0);
+        console.log("hide select menu");
+    }
+
     private callCreateSubPane(): void {
-        this.createSubPane(410, 428, "Attack", 24);
-        this.createSubPane(610, 428, "Defend", 24);
-        this.createSubPane(410, 505, "Skill", 24);
-        this.createSubPane(610, 505, "Exchange", 20);
+        this.selectMenuContainer = this.scene.add.container(410, 428, [
+            this.createSubPane(0, 0, "Attack", 24),
+            this.createSubPane(200, 0, "Defend", 24),
+            this.createSubPane(0, 77, "Skill", 24),
+            this.createSubPane(200, 77, "Exchange", 20),
+        ]);
+        this.hideSelectMenu();
     }
 
     private createSubPane(
