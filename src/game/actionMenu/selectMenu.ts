@@ -1,11 +1,13 @@
-import { GameObjects } from "phaser";
+import { SkillMenu } from "./skillMenu";
 
 export class SelectMenu {
     scene: Phaser.Scene;
     selectMenuContainer: Phaser.GameObjects.Container;
+    skillMenu: SkillMenu;
 
-    constructor(scene: Phaser.Scene) {
+    constructor(scene: Phaser.Scene, skillMenu: SkillMenu) {
         this.scene = scene;
+        this.skillMenu = skillMenu;
         this.callCreateSubPane();
     }
 
@@ -39,9 +41,19 @@ export class SelectMenu {
             .bitmapText(126, 64, "pixelFont", text, textSize)
             .setOrigin(0.5);
 
-        return this.scene.add.container(x, y, [
-            this.scene.add.image(0, 0, "sub_menu").setScale(2).setOrigin(0),
-            choice,
-        ]);
+        const background_image = this.scene.add
+            .image(0, 0, "sub_menu")
+            .setScale(2)
+            .setOrigin(0)
+            .setInteractive();
+
+        background_image.on("pointerdown", () => {
+            if (text === "Skill") {
+                this.skillMenu.showSkillMenu();
+                this.hideSelectMenu();
+            }
+        });
+
+        return this.scene.add.container(x, y, [background_image, choice]);
     }
 }

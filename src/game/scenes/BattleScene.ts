@@ -1,4 +1,4 @@
-import { GameObjects, Scene } from "phaser";
+import { GameObjects, Scene, Types } from "phaser";
 import { SelectMenu } from "../actionMenu/selectMenu";
 import { SkillMenu } from "../actionMenu/skillMenu";
 import { EventBus } from "../EventBus";
@@ -31,16 +31,14 @@ export class BattleScene extends Scene {
         this.enemy = this.add.image(1020, 380, "slime");
         this.menu = this.add.image(605, 530, "menu");
 
-        this.selectMenu = new SelectMenu(this);
-        this.selectMenu.showSelectMenu();
-
-        this.skillMenu = new SkillMenu(this, skillData);
-        // this.skillMenu.showSkillMenu();
-
         this.createStatWindow_mc(mc_stat);
         this.createStatWindow_enemy(slime_stat);
 
-        EventBus.emit("current-scene-ready", this);
+        this.skillMenu = new SkillMenu(this, skillData);
+        this.selectMenu = new SelectMenu(this, this.skillMenu);
+        this.selectMenu.showSelectMenu();
+
+        // this.skillMenu.showSkillMenu();
     }
 
     public createStatWindow_mc(stat: any) {
