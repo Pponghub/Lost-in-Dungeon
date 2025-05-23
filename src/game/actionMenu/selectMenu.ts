@@ -7,7 +7,7 @@ export class SelectMenu {
 
     constructor(scene: Phaser.Scene, skillMenu: SkillMenu) {
         this.scene = scene;
-        this.skillMenu = skillMenu;
+        this.skillMenu = skillMenu; 
         this.callCreateSubPane();
     }
 
@@ -38,22 +38,24 @@ export class SelectMenu {
         textSize: number
     ) {
         const choice = this.scene.add
-            .bitmapText(126, 64, "pixelFont", text, textSize)
+            .bitmapText(0, 0, "pixelFont", text, textSize)
             .setOrigin(0.5);
 
         const background_image = this.scene.add
             .image(0, 0, "sub_menu")
             .setScale(2)
-            .setOrigin(0)
+            .setOrigin(0.5)
             .setInteractive();
 
         background_image.on("pointerdown", () => {
             if (text === "Skill") {
                 this.skillMenu.showSkillMenu();
                 this.hideSelectMenu();
+            } else {
+                console.log(text);
             }
         });
 
-        return this.scene.add.container(x, y, [background_image, choice]);
+        return this.scene.add.container(x+126, y+64, [background_image, choice]);
     }
 }

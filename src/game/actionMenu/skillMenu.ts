@@ -36,11 +36,21 @@ export class SkillMenu {
         textSize: number
     ) {
         const choice = this.scene.add
-            .bitmapText(126, 64, "pixelFont", text, textSize)
+            .bitmapText(0, 0, "pixelFont", text, textSize)
             .setOrigin(0.5);
 
-        return this.scene.add.container(x, y, [
-            this.scene.add.image(0, 0, "sub_menu").setScale(2).setOrigin(0),
+        const background_image = this.scene.add
+            .image(0, 0, "sub_menu")
+            .setScale(2)
+            .setOrigin(0.5)
+            .setInteractive();
+
+        background_image.on("pointerdown", () => {
+            console.log(text);
+        });
+
+        return this.scene.add.container(x + 126, y + 64, [
+            background_image,
             choice,
         ]);
     }

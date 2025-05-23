@@ -13,10 +13,13 @@ export class BattleScene extends Scene {
     stat_box_enemy: GameObjects.Image;
     selectMenu: any;
     skillMenu: any;
+    cancelKey: Phaser.Input.Keyboard.Key;
 
     constructor() {
         super("BattleScene");
     }
+
+    //game cycle: standby->bet(1st turn)->menu->chose action->action->calulate damage->end turn
 
     create() {
         console.log("[${BattleScene.name}:create] invoked");
@@ -39,9 +42,22 @@ export class BattleScene extends Scene {
         this.selectMenu.showSelectMenu();
 
         // this.skillMenu.showSkillMenu();
+        if (this.input.keyboard) {
+            this.cancelKey = this.input.keyboard.addKey("ESC");
+        }
     }
 
-    public createStatWindow_mc(stat: any) {
+    update() {
+        if (Phaser.Input.Keyboard.JustDown(this.cancelKey)) {
+            if (this.skillMenu.skillMenuContainer.alpha === 1) {
+                this.skillMenu.hideSkillMenu();
+                this.selectMenu.showSelectMenu();
+                console.log("cancel skill menu");
+            }
+        }
+    }
+
+    private createStatWindow_mc(stat: any) {
         const mc_name = this.add
             .bitmapText(0, -55, "pixelFont", `${stat.name}`, 24)
             .setOrigin(0.5);
@@ -89,7 +105,7 @@ export class BattleScene extends Scene {
         ]);
     }
 
-    public createStatWindow_enemy(stat: any) {
+    private createStatWindow_enemy(stat: any) {
         const monster_name = this.add
             .bitmapText(0, -55, "pixelFont", `${stat.name}`, 24)
             .setOrigin(0.5);
