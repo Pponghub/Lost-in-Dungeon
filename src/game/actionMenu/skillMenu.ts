@@ -45,6 +45,18 @@ export class SkillMenu {
             .setOrigin(0.5)
             .setInteractive();
 
+        background_image.on("pointerover", () => {
+            background_image.setTint(0xc2c0c0);
+            background_image.setScale(1.9);
+            choice.setFontSize(textSize - 4);
+        });
+
+        background_image.on("pointerout", () => {
+            background_image.clearTint();
+            background_image.setScale(2);
+            choice.setFontSize(textSize);
+        });
+
         background_image.on("pointerdown", () => {
             console.log(text);
         });

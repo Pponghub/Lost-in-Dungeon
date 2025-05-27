@@ -1,3 +1,4 @@
+import { use } from "matter";
 import { SkillMenu } from "./skillMenu";
 
 export class SelectMenu {
@@ -7,7 +8,7 @@ export class SelectMenu {
 
     constructor(scene: Phaser.Scene, skillMenu: SkillMenu) {
         this.scene = scene;
-        this.skillMenu = skillMenu; 
+        this.skillMenu = skillMenu;
         this.callCreateSubPane();
     }
 
@@ -45,7 +46,19 @@ export class SelectMenu {
             .image(0, 0, "sub_menu")
             .setScale(2)
             .setOrigin(0.5)
-            .setInteractive();
+            .setInteractive({ useHandCursor: true });
+
+        background_image.on("pointerover", () => {
+            background_image.setTint(0xc2c0c0);
+            background_image.setScale(1.9);
+            choice.setFontSize(textSize - 4);
+        });
+
+        background_image.on("pointerout", () => {
+            background_image.clearTint();
+            background_image.setScale(2);
+            choice.setFontSize(textSize);
+        });
 
         background_image.on("pointerdown", () => {
             if (text === "Skill") {
@@ -56,6 +69,9 @@ export class SelectMenu {
             }
         });
 
-        return this.scene.add.container(x+126, y+64, [background_image, choice]);
+        return this.scene.add.container(x + 126, y + 64, [
+            background_image,
+            choice,
+        ]);
     }
 }
