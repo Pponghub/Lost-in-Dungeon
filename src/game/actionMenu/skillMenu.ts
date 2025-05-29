@@ -48,7 +48,7 @@ export class SkillMenu {
         background_image.on("pointerover", () => {
             background_image.setTint(0xc2c0c0);
             background_image.setScale(1.9);
-            choice.setFontSize(textSize - 4);
+            choice.setFontSize(textSize - 2);
         });
 
         background_image.on("pointerout", () => {
